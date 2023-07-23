@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package connectord.v1alpha1;
 
-option go_package = "github.com/openpds/connectord/gen/go/proto/connectord/v1alpha1;connectordv1alpha1";
+option go_package = "github.com/openpds/connectord/api/v1alpha1;connectordv1alpha1";
 
 service Connectord {
   rpc ListConnectors(ListConnectorsInput) returns (ListConnectorsOutput) {}
