@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: proto/connectord/v1alpha1/connectord.proto
 
-package connectord
+package connectordv1alpha1
 
 import (
 	context "context"
@@ -38,7 +38,7 @@ func NewConnectordClient(cc grpc.ClientConnInterface) ConnectordClient {
 
 func (c *connectordClient) ListConnectors(ctx context.Context, in *ListConnectorsInput, opts ...grpc.CallOption) (*ListConnectorsOutput, error) {
 	out := new(ListConnectorsOutput)
-	err := c.cc.Invoke(ctx, "/Connectord/ListConnectors", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/ListConnectors", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *connectordClient) ListConnectors(ctx context.Context, in *ListConnector
 
 func (c *connectordClient) CreateTransfer(ctx context.Context, in *CreateTransferInput, opts ...grpc.CallOption) (*CreateTransferOutput, error) {
 	out := new(CreateTransferOutput)
-	err := c.cc.Invoke(ctx, "/Connectord/CreateTransfer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/CreateTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (c *connectordClient) CreateTransfer(ctx context.Context, in *CreateTransfe
 
 func (c *connectordClient) CancelTransfer(ctx context.Context, in *CancelTransferInput, opts ...grpc.CallOption) (*CancelTransferOutput, error) {
 	out := new(CancelTransferOutput)
-	err := c.cc.Invoke(ctx, "/Connectord/CancelTransfer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/CancelTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -65,7 +65,7 @@ func (c *connectordClient) CancelTransfer(ctx context.Context, in *CancelTransfe
 
 func (c *connectordClient) ConfirmTransfer(ctx context.Context, in *ConfirmTransferInput, opts ...grpc.CallOption) (*ConfirmTransferOutput, error) {
 	out := new(ConfirmTransferOutput)
-	err := c.cc.Invoke(ctx, "/Connectord/ConfirmTransfer", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/ConfirmTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -120,7 +120,7 @@ func _Connectord_ListConnectors_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Connectord/ListConnectors",
+		FullMethod: "/connectord.v1alpha1.Connectord/ListConnectors",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ConnectordServer).ListConnectors(ctx, req.(*ListConnectorsInput))
@@ -138,7 +138,7 @@ func _Connectord_CreateTransfer_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Connectord/CreateTransfer",
+		FullMethod: "/connectord.v1alpha1.Connectord/CreateTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ConnectordServer).CreateTransfer(ctx, req.(*CreateTransferInput))
@@ -156,7 +156,7 @@ func _Connectord_CancelTransfer_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Connectord/CancelTransfer",
+		FullMethod: "/connectord.v1alpha1.Connectord/CancelTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ConnectordServer).CancelTransfer(ctx, req.(*CancelTransferInput))
@@ -174,7 +174,7 @@ func _Connectord_ConfirmTransfer_Handler(srv interface{}, ctx context.Context, d
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Connectord/ConfirmTransfer",
+		FullMethod: "/connectord.v1alpha1.Connectord/ConfirmTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ConnectordServer).ConfirmTransfer(ctx, req.(*ConfirmTransferInput))
@@ -186,7 +186,7 @@ func _Connectord_ConfirmTransfer_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Connectord_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "Connectord",
+	ServiceName: "connectord.v1alpha1.Connectord",
 	HandlerType: (*ConnectordServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

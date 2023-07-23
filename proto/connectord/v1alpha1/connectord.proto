@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-option go_package = "github.com/openpds/connectord";
+package connectord.v1alpha1;
+
+option go_package = "github.com/openpds/connectord/gen/go/proto/connectord/v1alpha1;connectordv1alpha1";
 
 service Connectord {
   rpc ListConnectors(ListConnectorsInput) returns (ListConnectorsOutput) {}
@@ -71,6 +73,11 @@ message Gateway {
     string name = 2;
 }
 
+enum TransferStatus {
+     COMPLETED = 0;
+     REFUSED = 1;
+}
+
 message Transfer {
   int64 id = 1;
   string sending_amount = 2;
@@ -82,6 +89,7 @@ message Transfer {
   Channel channel = 8;
   Provider provider = 9;
   Gateway gateway = 10;
+  TransferStatus status = 11;
 }
 
 message CreateTransferInput {
