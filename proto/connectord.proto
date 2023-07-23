@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 service Connectord {
   rpc ListConnectors(ListConnectorsInput) returns (ListConnectorsOutput) {}
   rpc CreateTransfer(CreateTransferInput) returns (CreateTransferOutput) {}
@@ -9,8 +11,24 @@ message ListConnectorsInput {
   string name = 1;
 }
 
+message VarSpec {
+    string name = 1;
+    string type = 2;
+    string default = 3;
+    string desc = 4;
+}
+
+message SecretSpec {
+    string name = 1;
+    string type = 2;
+    string desc = 3;
+}
+
 message ListConnectorsOutput {
-  string message = 1;
+  string id = 1;
+  string name = 2;
+  repeated VarSpec vars = 3;
+  repeated SecretSpec secrets = 4;
 }
 
 message CreateTransferInput {
