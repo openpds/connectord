@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.28.1
 // 	protoc        (unknown)
-// source: api/v1alpha1/connectord.proto
+// source: api/v1alpha1/containerd.proto
 
 package connectordv1alpha1
 
@@ -50,11 +50,11 @@ func (x Channel) String() string {
 }
 
 func (Channel) Descriptor() protoreflect.EnumDescriptor {
-	return file_api_v1alpha1_connectord_proto_enumTypes[0].Descriptor()
+	return file_api_v1alpha1_containerd_proto_enumTypes[0].Descriptor()
 }
 
 func (Channel) Type() protoreflect.EnumType {
-	return &file_api_v1alpha1_connectord_proto_enumTypes[0]
+	return &file_api_v1alpha1_containerd_proto_enumTypes[0]
 }
 
 func (x Channel) Number() protoreflect.EnumNumber {
@@ -63,7 +63,7 @@ func (x Channel) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Channel.Descriptor instead.
 func (Channel) EnumDescriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{0}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{0}
 }
 
 type TransferStatus int32
@@ -96,11 +96,11 @@ func (x TransferStatus) String() string {
 }
 
 func (TransferStatus) Descriptor() protoreflect.EnumDescriptor {
-	return file_api_v1alpha1_connectord_proto_enumTypes[1].Descriptor()
+	return file_api_v1alpha1_containerd_proto_enumTypes[1].Descriptor()
 }
 
 func (TransferStatus) Type() protoreflect.EnumType {
-	return &file_api_v1alpha1_connectord_proto_enumTypes[1]
+	return &file_api_v1alpha1_containerd_proto_enumTypes[1]
 }
 
 func (x TransferStatus) Number() protoreflect.EnumNumber {
@@ -109,7 +109,7 @@ func (x TransferStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use TransferStatus.Descriptor instead.
 func (TransferStatus) EnumDescriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{1}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{1}
 }
 
 type ListConnectorsInput struct {
@@ -123,7 +123,7 @@ type ListConnectorsInput struct {
 func (x *ListConnectorsInput) Reset() {
 	*x = ListConnectorsInput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[0]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -136,7 +136,7 @@ func (x *ListConnectorsInput) String() string {
 func (*ListConnectorsInput) ProtoMessage() {}
 
 func (x *ListConnectorsInput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[0]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -149,7 +149,7 @@ func (x *ListConnectorsInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConnectorsInput.ProtoReflect.Descriptor instead.
 func (*ListConnectorsInput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{0}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ListConnectorsInput) GetName() string {
@@ -173,7 +173,7 @@ type VarSpec struct {
 func (x *VarSpec) Reset() {
 	*x = VarSpec{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[1]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -186,7 +186,7 @@ func (x *VarSpec) String() string {
 func (*VarSpec) ProtoMessage() {}
 
 func (x *VarSpec) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[1]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -199,7 +199,7 @@ func (x *VarSpec) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VarSpec.ProtoReflect.Descriptor instead.
 func (*VarSpec) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{1}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *VarSpec) GetName() string {
@@ -243,7 +243,7 @@ type SecretSpec struct {
 func (x *SecretSpec) Reset() {
 	*x = SecretSpec{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[2]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -256,7 +256,7 @@ func (x *SecretSpec) String() string {
 func (*SecretSpec) ProtoMessage() {}
 
 func (x *SecretSpec) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[2]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -269,7 +269,7 @@ func (x *SecretSpec) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SecretSpec.ProtoReflect.Descriptor instead.
 func (*SecretSpec) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{2}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SecretSpec) GetName() string {
@@ -305,7 +305,7 @@ type Requirements struct {
 func (x *Requirements) Reset() {
 	*x = Requirements{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[3]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -318,7 +318,7 @@ func (x *Requirements) String() string {
 func (*Requirements) ProtoMessage() {}
 
 func (x *Requirements) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[3]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -331,7 +331,7 @@ func (x *Requirements) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Requirements.ProtoReflect.Descriptor instead.
 func (*Requirements) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{3}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Requirements) GetVars() []*VarSpec {
@@ -361,7 +361,7 @@ type Connector struct {
 func (x *Connector) Reset() {
 	*x = Connector{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[4]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -374,7 +374,7 @@ func (x *Connector) String() string {
 func (*Connector) ProtoMessage() {}
 
 func (x *Connector) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[4]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -387,7 +387,7 @@ func (x *Connector) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Connector.ProtoReflect.Descriptor instead.
 func (*Connector) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{4}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Connector) GetId() string {
@@ -422,7 +422,7 @@ type ListConnectorsOutput struct {
 func (x *ListConnectorsOutput) Reset() {
 	*x = ListConnectorsOutput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[5]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -435,7 +435,7 @@ func (x *ListConnectorsOutput) String() string {
 func (*ListConnectorsOutput) ProtoMessage() {}
 
 func (x *ListConnectorsOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[5]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -448,7 +448,7 @@ func (x *ListConnectorsOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListConnectorsOutput.ProtoReflect.Descriptor instead.
 func (*ListConnectorsOutput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{5}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListConnectorsOutput) GetConnectors() []*Connector {
@@ -470,7 +470,7 @@ type ReceivingMethod struct {
 func (x *ReceivingMethod) Reset() {
 	*x = ReceivingMethod{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[6]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -483,7 +483,7 @@ func (x *ReceivingMethod) String() string {
 func (*ReceivingMethod) ProtoMessage() {}
 
 func (x *ReceivingMethod) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[6]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -496,7 +496,7 @@ func (x *ReceivingMethod) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReceivingMethod.ProtoReflect.Descriptor instead.
 func (*ReceivingMethod) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{6}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ReceivingMethod) GetMsisdn() string {
@@ -531,7 +531,7 @@ type Var struct {
 func (x *Var) Reset() {
 	*x = Var{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[7]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -544,7 +544,7 @@ func (x *Var) String() string {
 func (*Var) ProtoMessage() {}
 
 func (x *Var) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[7]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -557,7 +557,7 @@ func (x *Var) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Var.ProtoReflect.Descriptor instead.
 func (*Var) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{7}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Var) GetName() string {
@@ -642,7 +642,7 @@ type Provider struct {
 func (x *Provider) Reset() {
 	*x = Provider{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[8]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -655,7 +655,7 @@ func (x *Provider) String() string {
 func (*Provider) ProtoMessage() {}
 
 func (x *Provider) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[8]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -668,7 +668,7 @@ func (x *Provider) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Provider.ProtoReflect.Descriptor instead.
 func (*Provider) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{8}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *Provider) GetId() int64 {
@@ -697,7 +697,7 @@ type Gateway struct {
 func (x *Gateway) Reset() {
 	*x = Gateway{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[9]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -710,7 +710,7 @@ func (x *Gateway) String() string {
 func (*Gateway) ProtoMessage() {}
 
 func (x *Gateway) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[9]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -723,7 +723,7 @@ func (x *Gateway) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Gateway.ProtoReflect.Descriptor instead.
 func (*Gateway) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{9}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *Gateway) GetId() int64 {
@@ -761,7 +761,7 @@ type Transfer struct {
 func (x *Transfer) Reset() {
 	*x = Transfer{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[10]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -774,7 +774,7 @@ func (x *Transfer) String() string {
 func (*Transfer) ProtoMessage() {}
 
 func (x *Transfer) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[10]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -787,7 +787,7 @@ func (x *Transfer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Transfer.ProtoReflect.Descriptor instead.
 func (*Transfer) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{10}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Transfer) GetId() int64 {
@@ -880,7 +880,7 @@ type CreateTransferInput struct {
 func (x *CreateTransferInput) Reset() {
 	*x = CreateTransferInput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[11]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -893,7 +893,7 @@ func (x *CreateTransferInput) String() string {
 func (*CreateTransferInput) ProtoMessage() {}
 
 func (x *CreateTransferInput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[11]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -906,7 +906,7 @@ func (x *CreateTransferInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTransferInput.ProtoReflect.Descriptor instead.
 func (*CreateTransferInput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{11}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateTransferInput) GetTransfer() *Transfer {
@@ -941,7 +941,7 @@ type CreateTransferOutput struct {
 func (x *CreateTransferOutput) Reset() {
 	*x = CreateTransferOutput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[12]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -954,7 +954,7 @@ func (x *CreateTransferOutput) String() string {
 func (*CreateTransferOutput) ProtoMessage() {}
 
 func (x *CreateTransferOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[12]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -967,7 +967,7 @@ func (x *CreateTransferOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateTransferOutput.ProtoReflect.Descriptor instead.
 func (*CreateTransferOutput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{12}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CreateTransferOutput) GetId() int64 {
@@ -988,7 +988,7 @@ type CancelTransferInput struct {
 func (x *CancelTransferInput) Reset() {
 	*x = CancelTransferInput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[13]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1001,7 +1001,7 @@ func (x *CancelTransferInput) String() string {
 func (*CancelTransferInput) ProtoMessage() {}
 
 func (x *CancelTransferInput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[13]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1014,7 +1014,7 @@ func (x *CancelTransferInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelTransferInput.ProtoReflect.Descriptor instead.
 func (*CancelTransferInput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{13}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CancelTransferInput) GetName() string {
@@ -1035,7 +1035,7 @@ type CancelTransferOutput struct {
 func (x *CancelTransferOutput) Reset() {
 	*x = CancelTransferOutput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[14]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1048,7 +1048,7 @@ func (x *CancelTransferOutput) String() string {
 func (*CancelTransferOutput) ProtoMessage() {}
 
 func (x *CancelTransferOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[14]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1061,7 +1061,7 @@ func (x *CancelTransferOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelTransferOutput.ProtoReflect.Descriptor instead.
 func (*CancelTransferOutput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{14}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *CancelTransferOutput) GetMessage() string {
@@ -1082,7 +1082,7 @@ type ConfirmTransferInput struct {
 func (x *ConfirmTransferInput) Reset() {
 	*x = ConfirmTransferInput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[15]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1095,7 +1095,7 @@ func (x *ConfirmTransferInput) String() string {
 func (*ConfirmTransferInput) ProtoMessage() {}
 
 func (x *ConfirmTransferInput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[15]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1108,7 +1108,7 @@ func (x *ConfirmTransferInput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmTransferInput.ProtoReflect.Descriptor instead.
 func (*ConfirmTransferInput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{15}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ConfirmTransferInput) GetName() string {
@@ -1129,7 +1129,7 @@ type ConfirmTransferOutput struct {
 func (x *ConfirmTransferOutput) Reset() {
 	*x = ConfirmTransferOutput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_api_v1alpha1_connectord_proto_msgTypes[16]
+		mi := &file_api_v1alpha1_containerd_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1142,7 +1142,7 @@ func (x *ConfirmTransferOutput) String() string {
 func (*ConfirmTransferOutput) ProtoMessage() {}
 
 func (x *ConfirmTransferOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1alpha1_connectord_proto_msgTypes[16]
+	mi := &file_api_v1alpha1_containerd_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1155,7 +1155,7 @@ func (x *ConfirmTransferOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConfirmTransferOutput.ProtoReflect.Descriptor instead.
 func (*ConfirmTransferOutput) Descriptor() ([]byte, []int) {
-	return file_api_v1alpha1_connectord_proto_rawDescGZIP(), []int{16}
+	return file_api_v1alpha1_containerd_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ConfirmTransferOutput) GetMessage() string {
@@ -1165,11 +1165,11 @@ func (x *ConfirmTransferOutput) GetMessage() string {
 	return ""
 }
 
-var File_api_v1alpha1_connectord_proto protoreflect.FileDescriptor
+var File_api_v1alpha1_containerd_proto protoreflect.FileDescriptor
 
-var file_api_v1alpha1_connectord_proto_rawDesc = []byte{
+var file_api_v1alpha1_containerd_proto_rawDesc = []byte{
 	0x0a, 0x1d, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x61, 0x6c, 0x70, 0x68, 0x61, 0x31, 0x2f, 0x63,
-	0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
+	0x6f, 0x6e, 0x74, 0x61, 0x69, 0x6e, 0x65, 0x72, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x13, 0x63, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x64, 0x2e, 0x76, 0x31, 0x61, 0x6c,
 	0x70, 0x68, 0x61, 0x31, 0x22, 0x29, 0x0a, 0x13, 0x4c, 0x69, 0x73, 0x74, 0x43, 0x6f, 0x6e, 0x6e,
 	0x65, 0x63, 0x74, 0x6f, 0x72, 0x73, 0x49, 0x6e, 0x70, 0x75, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e,
@@ -1327,20 +1327,20 @@ var file_api_v1alpha1_connectord_proto_rawDesc = []byte{
 }
 
 var (
-	file_api_v1alpha1_connectord_proto_rawDescOnce sync.Once
-	file_api_v1alpha1_connectord_proto_rawDescData = file_api_v1alpha1_connectord_proto_rawDesc
+	file_api_v1alpha1_containerd_proto_rawDescOnce sync.Once
+	file_api_v1alpha1_containerd_proto_rawDescData = file_api_v1alpha1_containerd_proto_rawDesc
 )
 
-func file_api_v1alpha1_connectord_proto_rawDescGZIP() []byte {
-	file_api_v1alpha1_connectord_proto_rawDescOnce.Do(func() {
-		file_api_v1alpha1_connectord_proto_rawDescData = protoimpl.X.CompressGZIP(file_api_v1alpha1_connectord_proto_rawDescData)
+func file_api_v1alpha1_containerd_proto_rawDescGZIP() []byte {
+	file_api_v1alpha1_containerd_proto_rawDescOnce.Do(func() {
+		file_api_v1alpha1_containerd_proto_rawDescData = protoimpl.X.CompressGZIP(file_api_v1alpha1_containerd_proto_rawDescData)
 	})
-	return file_api_v1alpha1_connectord_proto_rawDescData
+	return file_api_v1alpha1_containerd_proto_rawDescData
 }
 
-var file_api_v1alpha1_connectord_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_api_v1alpha1_connectord_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
-var file_api_v1alpha1_connectord_proto_goTypes = []interface{}{
+var file_api_v1alpha1_containerd_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_api_v1alpha1_containerd_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_api_v1alpha1_containerd_proto_goTypes = []interface{}{
 	(Channel)(0),                  // 0: connectord.v1alpha1.Channel
 	(TransferStatus)(0),           // 1: connectord.v1alpha1.TransferStatus
 	(*ListConnectorsInput)(nil),   // 2: connectord.v1alpha1.ListConnectorsInput
@@ -1361,7 +1361,7 @@ var file_api_v1alpha1_connectord_proto_goTypes = []interface{}{
 	(*ConfirmTransferInput)(nil),  // 17: connectord.v1alpha1.ConfirmTransferInput
 	(*ConfirmTransferOutput)(nil), // 18: connectord.v1alpha1.ConfirmTransferOutput
 }
-var file_api_v1alpha1_connectord_proto_depIdxs = []int32{
+var file_api_v1alpha1_containerd_proto_depIdxs = []int32{
 	3,  // 0: connectord.v1alpha1.Requirements.vars:type_name -> connectord.v1alpha1.VarSpec
 	4,  // 1: connectord.v1alpha1.Requirements.secrets:type_name -> connectord.v1alpha1.SecretSpec
 	5,  // 2: connectord.v1alpha1.Connector.requirements:type_name -> connectord.v1alpha1.Requirements
@@ -1389,13 +1389,13 @@ var file_api_v1alpha1_connectord_proto_depIdxs = []int32{
 	0,  // [0:12] is the sub-list for field type_name
 }
 
-func init() { file_api_v1alpha1_connectord_proto_init() }
-func file_api_v1alpha1_connectord_proto_init() {
-	if File_api_v1alpha1_connectord_proto != nil {
+func init() { file_api_v1alpha1_containerd_proto_init() }
+func file_api_v1alpha1_containerd_proto_init() {
+	if File_api_v1alpha1_containerd_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_api_v1alpha1_connectord_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ListConnectorsInput); i {
 			case 0:
 				return &v.state
@@ -1407,7 +1407,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*VarSpec); i {
 			case 0:
 				return &v.state
@@ -1419,7 +1419,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SecretSpec); i {
 			case 0:
 				return &v.state
@@ -1431,7 +1431,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Requirements); i {
 			case 0:
 				return &v.state
@@ -1443,7 +1443,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Connector); i {
 			case 0:
 				return &v.state
@@ -1455,7 +1455,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ListConnectorsOutput); i {
 			case 0:
 				return &v.state
@@ -1467,7 +1467,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ReceivingMethod); i {
 			case 0:
 				return &v.state
@@ -1479,7 +1479,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Var); i {
 			case 0:
 				return &v.state
@@ -1491,7 +1491,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Provider); i {
 			case 0:
 				return &v.state
@@ -1503,7 +1503,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Gateway); i {
 			case 0:
 				return &v.state
@@ -1515,7 +1515,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Transfer); i {
 			case 0:
 				return &v.state
@@ -1527,7 +1527,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateTransferInput); i {
 			case 0:
 				return &v.state
@@ -1539,7 +1539,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateTransferOutput); i {
 			case 0:
 				return &v.state
@@ -1551,7 +1551,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CancelTransferInput); i {
 			case 0:
 				return &v.state
@@ -1563,7 +1563,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CancelTransferOutput); i {
 			case 0:
 				return &v.state
@@ -1575,7 +1575,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ConfirmTransferInput); i {
 			case 0:
 				return &v.state
@@ -1587,7 +1587,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 				return nil
 			}
 		}
-		file_api_v1alpha1_connectord_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+		file_api_v1alpha1_containerd_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ConfirmTransferOutput); i {
 			case 0:
 				return &v.state
@@ -1600,7 +1600,7 @@ func file_api_v1alpha1_connectord_proto_init() {
 			}
 		}
 	}
-	file_api_v1alpha1_connectord_proto_msgTypes[7].OneofWrappers = []interface{}{
+	file_api_v1alpha1_containerd_proto_msgTypes[7].OneofWrappers = []interface{}{
 		(*Var_StringValue)(nil),
 		(*Var_Int64Value)(nil),
 		(*Var_Int32Value)(nil),
@@ -1610,19 +1610,19 @@ func file_api_v1alpha1_connectord_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_api_v1alpha1_connectord_proto_rawDesc,
+			RawDescriptor: file_api_v1alpha1_containerd_proto_rawDesc,
 			NumEnums:      2,
 			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_api_v1alpha1_connectord_proto_goTypes,
-		DependencyIndexes: file_api_v1alpha1_connectord_proto_depIdxs,
-		EnumInfos:         file_api_v1alpha1_connectord_proto_enumTypes,
-		MessageInfos:      file_api_v1alpha1_connectord_proto_msgTypes,
+		GoTypes:           file_api_v1alpha1_containerd_proto_goTypes,
+		DependencyIndexes: file_api_v1alpha1_containerd_proto_depIdxs,
+		EnumInfos:         file_api_v1alpha1_containerd_proto_enumTypes,
+		MessageInfos:      file_api_v1alpha1_containerd_proto_msgTypes,
 	}.Build()
-	File_api_v1alpha1_connectord_proto = out.File
-	file_api_v1alpha1_connectord_proto_rawDesc = nil
-	file_api_v1alpha1_connectord_proto_goTypes = nil
-	file_api_v1alpha1_connectord_proto_depIdxs = nil
+	File_api_v1alpha1_containerd_proto = out.File
+	file_api_v1alpha1_containerd_proto_rawDesc = nil
+	file_api_v1alpha1_containerd_proto_goTypes = nil
+	file_api_v1alpha1_containerd_proto_depIdxs = nil
 }
