@@ -41,17 +41,37 @@ message ListConnectorsOutput {
     repeated Connector connectors = 1;
 }
 
-message CreateTransferInput {
-  message ReceivingMethod {
-    string msisdn = 1;
-    string account_number = 2;
-  }
-
-  enum Channel {
+enum Channel {
     BANK = 0;
     MOBILE = 1;
-  }
+}
 
+message ReceivingMethod {
+    string msisdn = 1;
+    string account_number = 2;
+}
+
+message Var {
+    string name = 1;
+    oneof value {
+           string string_value = 2;
+           int64  int64_value = 3;
+           int32  int32_value = 4;
+           bool   bool_value = 5;
+    }
+}
+
+message Provider {
+    int64 id = 1;
+    string name = 2;
+}
+
+message Gateway {
+    int64 id = 1;
+    string name = 2;
+}
+
+message Transfer {
   int64 id = 1;
   string sending_amount = 2;
   string sending_currency = 3;
@@ -60,6 +80,14 @@ message CreateTransferInput {
   string connector = 6;
   ReceivingMethod receiving_method = 7;
   Channel channel = 8;
+  Provider provider = 9;
+  Gateway gateway = 10;
+}
+
+message CreateTransferInput {
+  Transfer transfer = 1;
+  repeated Var vars = 2;
+  repeated Var secrets = 3;
 }
 
 message CreateTransferOutput {
