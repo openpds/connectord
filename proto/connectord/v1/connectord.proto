@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "github.com/openpds/connectord";
+
 service Connectord {
   rpc ListConnectors(ListConnectorsInput) returns (ListConnectorsOutput) {}
   rpc CreateTransfer(CreateTransferInput) returns (CreateTransferOutput) {}
@@ -24,19 +26,44 @@ message SecretSpec {
     string desc = 3;
 }
 
-message ListConnectorsOutput {
+message Requirements {
+    repeated VarSpec vars = 1;
+    repeated SecretSpec secrets = 2;
+}
+
+message Connector {
   string id = 1;
   string name = 2;
-  repeated VarSpec vars = 3;
-  repeated SecretSpec secrets = 4;
+  Requirements requirements = 3;
+}
+
+message ListConnectorsOutput {
+    repeated Connector connectors = 1;
 }
 
 message CreateTransferInput {
-  string name = 1;
+  message ReceivingMethod {
+    string msisdn = 1;
+    string account_number = 2;
+  }
+
+  enum Channel {
+    BANK = 0;
+    MOBILE = 1;
+  }
+
+  int64 id = 1;
+  string sending_amount = 2;
+  string sending_currency = 3;
+  string receiving_amount = 4;
+  string receiving_currency = 5;
+  string connector = 6;
+  ReceivingMethod receiving_method = 7;
+  Channel channel = 8;
 }
 
 message CreateTransferOutput {
-  string message = 1;
+  int64 id = 1;
 }
 
 message CancelTransferInput {
