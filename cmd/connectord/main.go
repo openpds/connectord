@@ -8,17 +8,13 @@ import (
 )
 
 var (
-	r = connectorsdk.NewRegistry()
+	r = connectorsdk.NewRegistry(
+		dummymz.New(),
+	)
 )
 
 func main() {
-	register()
-
 	r.For(func(c connectorsdk.Connector) {
 		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s", c.ID(), c.Name(), c.Version())
 	})
-}
-
-func register() {
-	r.Register(dummymz.New())
 }
