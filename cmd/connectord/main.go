@@ -14,7 +14,7 @@ var (
 )
 
 func main() {
-	r.For(func(c connectorsdk.Connector) {
+	r.Walk(func(c connectorsdk.Connector) {
 		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s", c.ID(), c.Name(), c.Version())
 	})
 }
