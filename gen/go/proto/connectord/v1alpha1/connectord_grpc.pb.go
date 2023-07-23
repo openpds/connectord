@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             (unknown)
-// source: proto/connectord/v1/connectord.proto
+// source: proto/connectord/v1alpha1/connectord.proto
 
 package connectord
 
@@ -207,5 +207,5 @@ var Connectord_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/connectord/v1/connectord.proto",
+	Metadata: "proto/connectord/v1alpha1/connectord.proto",
 }
