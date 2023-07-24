@@ -36,8 +36,8 @@ builds:
     main: ./cmd/connectord/main.go
     binary: connectord
     ldflags:
-      - "-s -w -X github.com/openpds/connectord/internal/build.Version={{.Version}}"
-      - "-s -w -X github.com/openpds/connectord/internal/build.Date={{.Date}}"
+      - "-s -w -X github.com/openpds/connectord/build.Version={{.Version}}"
+      - "-s -w -X github.com/openpds/connectord/build.Date={{.Date}}"
 
   - id: darwin
     env:
@@ -50,8 +50,8 @@ builds:
     main: ./cmd/connectord/main.go
     binary: connectord
     ldflags:
-      - "-s -w -X github.com/openpds/connectord/internal/build.Version={{.Version}}"
-      - "-s -w -X github.com/openpds/connectord/internal/build.Date={{.Date}}"
+      - "-s -w -X github.com/openpds/connectord/build.Version={{.Version}}"
+      - "-s -w -X github.com/openpds/connectord/build.Date={{.Date}}"
 
   - id: windows
     env:
@@ -64,32 +64,32 @@ builds:
     main: ./cmd/connectord/main.go
     binary: bin/connectord
     ldflags:
-      - "-s -w -X github.com/openpds/connectord/internal/build.Version={{.Version}}"
-      - "-s -w -X github.com/openpds/connectord/internal/build.Date={{.Date}}"
+      - "-s -w -X github.com/openpds/connectord/build.Version={{.Version}}"
+      - "-s -w -X github.com/openpds/connectord/build.Date={{.Date}}"
 
 archives:
   - format: tar.gz
-    name_template: '{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
+    name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     wrap_in_directory: true
     strip_parent_binary_folder: true
     files:
       - LICENSE
     format_overrides:
-    - goos: windows
-      format: zip
+      - goos: windows
+        format: zip
     replacements:
       darwin: macos
 
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
 changelog:
   sort: asc
   filters:
     exclude:
-      - '^docs:'
-      - '^test:'
+      - "^docs:"
+      - "^test:"
 
 nfpms:
   - license: Apache-2.0
@@ -105,8 +105,7 @@ nfpms:
       - archlinux
 
 dockers:
-  -
-    id: amd64
+  - id: amd64
     use: buildx
     goos: linux
     goarch: amd64
@@ -126,8 +125,7 @@ dockers:
       - "--platform=linux/amd64"
     push_flags:
       - --tls-verify=false
-  -
-    id: arm64
+  - id: arm64
     use: buildx
     goos: linux
     goarch: arm64
@@ -163,8 +161,8 @@ docker_manifests:
       - "openpds/connectord:{{ .Major }}.{{ .Minor }}-arm64"
 
 snapcrafts:
-  - name_template: '{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
-    summary:  A client for DNSimple
+  - name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    summary: A client for DNSimple
     description: A client for DNSimple
     grade: stable
     publish: true
