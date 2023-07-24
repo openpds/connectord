@@ -13,7 +13,11 @@ var (
 	}
 )
 
-func Init() (*Config, error) {
+type configOptions struct{}
+
+type Option func(*configOptions)
+
+func Init(opt ...Option) (*Config, error) {
 	cfg := &Config{
 		Connectors: map[string]*Operations{},
 	}
