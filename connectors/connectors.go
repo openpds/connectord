@@ -20,7 +20,7 @@ import (
 	"sync"
 
 	connectorsdk "github.com/openpds/connector-sdk"
-	dummymz "github.com/openpds/connector-sdk/example/dummy-mz"
+	dummymz "github.com/openpds/connectord/connectors/dummy-mz"
 )
 
 var (

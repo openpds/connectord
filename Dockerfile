@@ -1,4 +1,4 @@
-# Copyright 2023 The Openpds Authors
+# Copyright 2023 Edson Michaque
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +14,10 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-FROM phusion/baseimage:latest
-    MAINTAINER Edson Michaque <edson@michaque.com>
+FROM alpine
+
+COPY connectord /usr/bin
+
+ENTRYPOINT [ "connectord" ]
+
+CMD [ "connectord" ]
