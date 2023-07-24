@@ -22,10 +22,10 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConnectordClient interface {
-	ListConnectors(ctx context.Context, in *ListConnectorsInput, opts ...grpc.CallOption) (*ListConnectorsOutput, error)
-	CreateTransfer(ctx context.Context, in *CreateTransferInput, opts ...grpc.CallOption) (*CreateTransferOutput, error)
-	CancelTransfer(ctx context.Context, in *CancelTransferInput, opts ...grpc.CallOption) (*CancelTransferOutput, error)
-	ConfirmTransfer(ctx context.Context, in *ConfirmTransferInput, opts ...grpc.CallOption) (*ConfirmTransferOutput, error)
+	ListConnectors(ctx context.Context, in *ListConnectorsRequest, opts ...grpc.CallOption) (*ListConnectorsResponse, error)
+	CreateTransfer(ctx context.Context, in *CreateTransferRequest, opts ...grpc.CallOption) (*CreateTransferResponse, error)
+	CancelTransfer(ctx context.Context, in *CancelTransferRequest, opts ...grpc.CallOption) (*CancelTransferResponse, error)
+	ConfirmTransfer(ctx context.Context, in *ConfirmTransferRequest, opts ...grpc.CallOption) (*ConfirmTransferResponse, error)
 }
 
 type connectordClient struct {
@@ -36,8 +36,8 @@ func NewConnectordClient(cc grpc.ClientConnInterface) ConnectordClient {
 	return &connectordClient{cc}
 }
 
-func (c *connectordClient) ListConnectors(ctx context.Context, in *ListConnectorsInput, opts ...grpc.CallOption) (*ListConnectorsOutput, error) {
-	out := new(ListConnectorsOutput)
+func (c *connectordClient) ListConnectors(ctx context.Context, in *ListConnectorsRequest, opts ...grpc.CallOption) (*ListConnectorsResponse, error) {
+	out := new(ListConnectorsResponse)
 	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/ListConnectors", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -45,8 +45,8 @@ func (c *connectordClient) ListConnectors(ctx context.Context, in *ListConnector
 	return out, nil
 }
 
-func (c *connectordClient) CreateTransfer(ctx context.Context, in *CreateTransferInput, opts ...grpc.CallOption) (*CreateTransferOutput, error) {
-	out := new(CreateTransferOutput)
+func (c *connectordClient) CreateTransfer(ctx context.Context, in *CreateTransferRequest, opts ...grpc.CallOption) (*CreateTransferResponse, error) {
+	out := new(CreateTransferResponse)
 	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/CreateTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -54,8 +54,8 @@ func (c *connectordClient) CreateTransfer(ctx context.Context, in *CreateTransfe
 	return out, nil
 }
 
-func (c *connectordClient) CancelTransfer(ctx context.Context, in *CancelTransferInput, opts ...grpc.CallOption) (*CancelTransferOutput, error) {
-	out := new(CancelTransferOutput)
+func (c *connectordClient) CancelTransfer(ctx context.Context, in *CancelTransferRequest, opts ...grpc.CallOption) (*CancelTransferResponse, error) {
+	out := new(CancelTransferResponse)
 	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/CancelTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -63,8 +63,8 @@ func (c *connectordClient) CancelTransfer(ctx context.Context, in *CancelTransfe
 	return out, nil
 }
 
-func (c *connectordClient) ConfirmTransfer(ctx context.Context, in *ConfirmTransferInput, opts ...grpc.CallOption) (*ConfirmTransferOutput, error) {
-	out := new(ConfirmTransferOutput)
+func (c *connectordClient) ConfirmTransfer(ctx context.Context, in *ConfirmTransferRequest, opts ...grpc.CallOption) (*ConfirmTransferResponse, error) {
+	out := new(ConfirmTransferResponse)
 	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/ConfirmTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -76,26 +76,26 @@ func (c *connectordClient) ConfirmTransfer(ctx context.Context, in *ConfirmTrans
 // All implementations should embed UnimplementedConnectordServer
 // for forward compatibility
 type ConnectordServer interface {
-	ListConnectors(context.Context, *ListConnectorsInput) (*ListConnectorsOutput, error)
-	CreateTransfer(context.Context, *CreateTransferInput) (*CreateTransferOutput, error)
-	CancelTransfer(context.Context, *CancelTransferInput) (*CancelTransferOutput, error)
-	ConfirmTransfer(context.Context, *ConfirmTransferInput) (*ConfirmTransferOutput, error)
+	ListConnectors(context.Context, *ListConnectorsRequest) (*ListConnectorsResponse, error)
+	CreateTransfer(context.Context, *CreateTransferRequest) (*CreateTransferResponse, error)
+	CancelTransfer(context.Context, *CancelTransferRequest) (*CancelTransferResponse, error)
+	ConfirmTransfer(context.Context, *ConfirmTransferRequest) (*ConfirmTransferResponse, error)
 }
 
 // UnimplementedConnectordServer should be embedded to have forward compatible implementations.
 type UnimplementedConnectordServer struct {
 }
 
-func (UnimplementedConnectordServer) ListConnectors(context.Context, *ListConnectorsInput) (*ListConnectorsOutput, error) {
+func (UnimplementedConnectordServer) ListConnectors(context.Context, *ListConnectorsRequest) (*ListConnectorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListConnectors not implemented")
 }
-func (UnimplementedConnectordServer) CreateTransfer(context.Context, *CreateTransferInput) (*CreateTransferOutput, error) {
+func (UnimplementedConnectordServer) CreateTransfer(context.Context, *CreateTransferRequest) (*CreateTransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTransfer not implemented")
 }
-func (UnimplementedConnectordServer) CancelTransfer(context.Context, *CancelTransferInput) (*CancelTransferOutput, error) {
+func (UnimplementedConnectordServer) CancelTransfer(context.Context, *CancelTransferRequest) (*CancelTransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelTransfer not implemented")
 }
-func (UnimplementedConnectordServer) ConfirmTransfer(context.Context, *ConfirmTransferInput) (*ConfirmTransferOutput, error) {
+func (UnimplementedConnectordServer) ConfirmTransfer(context.Context, *ConfirmTransferRequest) (*ConfirmTransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConfirmTransfer not implemented")
 }
 
@@ -111,7 +111,7 @@ func RegisterConnectordServer(s grpc.ServiceRegistrar, srv ConnectordServer) {
 }
 
 func _Connectord_ListConnectors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListConnectorsInput)
+	in := new(ListConnectorsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -123,13 +123,13 @@ func _Connectord_ListConnectors_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/connectord.v1alpha1.Connectord/ListConnectors",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConnectordServer).ListConnectors(ctx, req.(*ListConnectorsInput))
+		return srv.(ConnectordServer).ListConnectors(ctx, req.(*ListConnectorsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Connectord_CreateTransfer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateTransferInput)
+	in := new(CreateTransferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -141,13 +141,13 @@ func _Connectord_CreateTransfer_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/connectord.v1alpha1.Connectord/CreateTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConnectordServer).CreateTransfer(ctx, req.(*CreateTransferInput))
+		return srv.(ConnectordServer).CreateTransfer(ctx, req.(*CreateTransferRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Connectord_CancelTransfer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CancelTransferInput)
+	in := new(CancelTransferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -159,13 +159,13 @@ func _Connectord_CancelTransfer_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: "/connectord.v1alpha1.Connectord/CancelTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConnectordServer).CancelTransfer(ctx, req.(*CancelTransferInput))
+		return srv.(ConnectordServer).CancelTransfer(ctx, req.(*CancelTransferRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Connectord_ConfirmTransfer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ConfirmTransferInput)
+	in := new(ConfirmTransferRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -177,7 +177,7 @@ func _Connectord_ConfirmTransfer_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/connectord.v1alpha1.Connectord/ConfirmTransfer",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConnectordServer).ConfirmTransfer(ctx, req.(*ConfirmTransferInput))
+		return srv.(ConnectordServer).ConfirmTransfer(ctx, req.(*ConfirmTransferRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

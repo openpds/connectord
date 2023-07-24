@@ -5,13 +5,13 @@ package connectord.v1alpha1;
 option go_package = "github.com/openpds/connectord/api/v1alpha1;connectordv1alpha1";
 
 service Connectord {
-  rpc ListConnectors(ListConnectorsInput) returns (ListConnectorsOutput) {}
-  rpc CreateTransfer(CreateTransferInput) returns (CreateTransferOutput) {}
-  rpc CancelTransfer(CancelTransferInput) returns (CancelTransferOutput) {}
-  rpc ConfirmTransfer(ConfirmTransferInput) returns (ConfirmTransferOutput) {}
+  rpc ListConnectors(ListConnectorsRequest) returns (ListConnectorsResponse) {}
+  rpc CreateTransfer(CreateTransferRequest) returns (CreateTransferResponse) {}
+  rpc CancelTransfer(CancelTransferRequest) returns (CancelTransferResponse) {}
+  rpc ConfirmTransfer(ConfirmTransferRequest) returns (ConfirmTransferResponse) {}
 }
 
-message ListConnectorsInput {
+message ListConnectorsRequest {
   string name = 1;
 }
 
@@ -39,7 +39,7 @@ message Connector {
   Requirements requirements = 3;
 }
 
-message ListConnectorsOutput {
+message ListConnectorsResponse {
     repeated Connector connectors = 1;
 }
 
@@ -92,28 +92,28 @@ message Transfer {
   TransferStatus status = 11;
 }
 
-message CreateTransferInput {
+message CreateTransferRequest {
   Transfer transfer = 1;
   repeated Var vars = 2;
   repeated Var secrets = 3;
 }
 
-message CreateTransferOutput {
+message CreateTransferResponse {
   int64 id = 1;
 }
 
-message CancelTransferInput {
+message CancelTransferRequest {
   string name = 1;
 }
 
-message CancelTransferOutput {
+message CancelTransferResponse {
   string message = 1;
 }
 
-message ConfirmTransferInput {
+message ConfirmTransferRequest {
   string name = 1;
 }
 
-message ConfirmTransferOutput {
+message ConfirmTransferResponse {
   string message = 1;
 }
