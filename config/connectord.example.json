@@ -1,0 +1,12 @@
+{
+  "connectors": {
+    "dummy-mz": {
+      "create_transfer": {
+        "timeout": "5s"
+      },
+      "check_transfer": {
+        "timeout": "5s"
+      }
+    }
+  }
+}
