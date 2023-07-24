@@ -1,23 +1,25 @@
 package main
 
 import (
-	"context"
 	"fmt"
+	"log"
 	"time"
 
 	connectorsdk "github.com/openpds/connector-sdk"
-	dummymz "github.com/openpds/connector-sdk/example/dummy-mz"
-)
-
-var (
-	r = connectorsdk.NewRegistry(
-		dummymz.New(),
-	)
+	"github.com/openpds/connectord/config"
+	"github.com/openpds/connectord/connectors"
 )
 
 func main() {
-	r.Walk(func(c connectorsdk.Connector) {
-		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s", c.ID(), c.Name(), c.Version())
+	cfg, err := config.Init()
+	if err != nil {
+		panic(err)
+	}
+
+	log.Printf("%q", cfg)
+
+	connectors.Walk(func(c connectorsdk.Connector) {
+		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s\n", c.ID(), c.Name(), c.Version())
 	})
 
 	ticker := time.NewTicker(10 * time.Second)
@@ -34,7 +36,7 @@ func run(t time.Time) {
 	fmt.Println(t)
 }
 
-func doConfigure(ctx context.Context, connctx *connectorsdk.Context, conn connectorsdk.Connector) error {
+/*func doConfigure(ctx context.Context, connctx *connectorsdk.Context, conn connectorsdk.Connector) error {
 	if err := ctx.Err(); err != nil {
 		return err
 	}
@@ -57,10 +59,6 @@ func doConfigure(ctx context.Context, connctx *connectorsdk.Context, conn connec
 	case err := <-errC:
 		return err
 	}
-}
-
-type Connectord struct {
-	config *Config
 }
 
 func (Connectord) doCreateTransfer(ctx context.Context, c connectorsdk.Connector, input *connectorsdk.CreateTransferInput) (*connectorsdk.CreateTransferOutput, error) {
@@ -182,3 +180,4 @@ func (Connectord) doCancelTransfer(ctx context.Context, c connectorsdk.Connector
 		return resp, nil
 	}
 }
+*/
