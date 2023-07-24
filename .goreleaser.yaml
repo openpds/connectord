@@ -77,8 +77,6 @@ archives:
     format_overrides:
       - goos: windows
         format: zip
-    replacements:
-      darwin: macos
 
 checksum:
   name_template: "checksums.txt"
