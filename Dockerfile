@@ -14,13 +14,5 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-version: v1
-plugins:
-  - plugin: go
-    out: .
-    opt: paths=source_relative
-  - plugin: go-grpc
-    out: .
-    opt:
-      - paths=source_relative
-      - require_unimplemented_servers=false
+FROM phusion/baseimage:latest
+    MAINTAINER Edson Michaque <edson@michaque.com>
