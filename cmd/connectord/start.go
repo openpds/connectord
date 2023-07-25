@@ -46,9 +46,18 @@ func (c ConnectorWrapper) Configure(ctx context.Context, cfg *connector.Configur
 	}
 }
 
+func shouldRetry(err error) bool {
+	return false
+}
+
 func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.CreateTransferInput) (*connector.CreateTransferOutput, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
+	}
+
+	creator, ok := c.conn.(connector.TransferCreator)
+	if !ok {
+		return nil, connector.ErrNotImplemented
 	}
 
 	errC := make(chan error)
@@ -58,19 +67,25 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.C
 	defer close(respC)
 
 	go func() {
-		creator, ok := c.conn.(connector.TransferCreator)
-		if !ok {
-			errC <- connector.ErrNotImplemented
+		var (
+			attempts    = 0
+			maxAttempts = 10
+		)
+
+		for attempts = 0; attempts < maxAttempts; attempts++ {
+			resp, err := creator.CreateTransfer(ctx, input)
+			if err != nil {
+				if shouldRetry(err) && attempts < maxAttempts-1 {
+					continue
+				}
+
+				errC <- err
+				return
+			}
+
+			respC <- resp
 			return
 		}
-
-		resp, err := creator.CreateTransfer(ctx, input)
-		if err != nil {
-			errC <- err
-			return
-		}
-
-		respC <- resp
 	}()
 
 	select {
