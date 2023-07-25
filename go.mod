@@ -3,7 +3,7 @@ module github.com/openpds/connectord
 go 1.20
 
 require (
-	github.com/openpds/connector-sdk v0.0.0-20230724155932-02aad21fe979
+	github.com/openpds/connector-sdk v0.0.0-20230725062307-35624093fcb8
 	google.golang.org/grpc v1.56.2
 	google.golang.org/protobuf v1.31.0
 )
@@ -16,4 +16,4 @@ require (
 	google.golang.org/genproto v0.0.0-20230410155749-daa745c078e1 // indirect
 )
 
-replace github.com/openpds/connector-sdk => ../connector-sdk
+//replace github.com/openpds/connector-sdk => ../connector-sdk
