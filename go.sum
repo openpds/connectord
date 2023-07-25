@@ -3,10 +3,6 @@ github.com/golang/protobuf v1.5.3 h1:KhyjKVUg7Usr/dYsdSqoFveMYd5ko72D+zANwlG1mmg
 github.com/golang/protobuf v1.5.3/go.mod h1:XVQd3VNwM+JqD3oG2Ue2ip4fOMUkwXdXDdiuN0vRsmY=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
-github.com/openpds/connector-sdk v0.0.0-20230723203113-e218ba026ab1 h1:g/gjUX3+ZU9sq8vI9PtC5POEWCrG70F7xH5NDl9GZJ8=
-github.com/openpds/connector-sdk v0.0.0-20230723203113-e218ba026ab1/go.mod h1:ev2NMWcJj+oNF7zVU+cktBtKHGcBMopJgWPfYG/T5+w=
-github.com/openpds/connector-sdk v0.0.0-20230724155932-02aad21fe979 h1:6MwiRmwPfEMkLSTkImfEFadvnditBMkRrvYFRWpFM6I=
-github.com/openpds/connector-sdk v0.0.0-20230724155932-02aad21fe979/go.mod h1:ev2NMWcJj+oNF7zVU+cktBtKHGcBMopJgWPfYG/T5+w=
 golang.org/x/net v0.9.0 h1:aWJ/m6xSmxWBx+V0XRHTlrYrPG56jKsLdTFmsSsCzOM=
 golang.org/x/net v0.9.0/go.mod h1:d48xBJpPfHeWQsugry2m+kC02ZBRGRgulfHnEXEuWns=
 golang.org/x/sys v0.7.0 h1:3jlCCIQZPdOYu1h8BkNvLz8Kgwtae2cagcG/VamtZRU=

@@ -39,9 +39,9 @@ func Init(opt ...Option) (*Config, error) {
 	}
 
 	connectors.Walk(func(c connectorsdk.Connector) {
-		cfg.Connectors[c.ID()] = &Operations{}
+		cfg.Connectors[c.Manifest().ID] = &Operations{}
 		if _, ok := c.(connectorsdk.TransferCreator); ok {
-			cfg.Connectors[c.ID()].CreateTransfer = DefaultOperation
+			cfg.Connectors[c.Manifest().ID].CreateTransfer = DefaultOperation
 		}
 	})
 

@@ -35,7 +35,7 @@ func main() {
 	log.Printf("%q", cfg)
 
 	connectors.Walk(func(c connectorsdk.Connector) {
-		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s\n", c.ID(), c.Name(), c.Version())
+		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s\n", c.Manifest().ID, c.Manifest().Name, c.Manifest().Version)
 	})
 
 	ticker := time.NewTicker(10 * time.Second)
