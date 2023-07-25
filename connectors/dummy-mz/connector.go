@@ -11,15 +11,15 @@ func New() *dummymz {
 	return &dummymz{}
 }
 
+type dummymz struct {
+	config config
+}
+
 type config struct {
 	ip    string
 	port  string
 	path  string
 	token string
-}
-
-type dummymz struct {
-	config config
 }
 
 func (d *dummymz) Configure(opts *connectorsdk.ConfigureOptions) error {
