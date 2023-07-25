@@ -5,6 +5,7 @@ import (
 	"errors"
 
 	"github.com/openpds/connectord/connector"
+	"github.com/openpds/connectord/hooks"
 )
 
 func New() *dummymz {
@@ -66,6 +67,12 @@ func (d dummymz) Manifest() connector.Manifest {
 				Name:        "token",
 				Type:        "string",
 				Description: "IP represents an IP address",
+			},
+		},
+		Hooks: connector.Hooks{
+			PreCreateTransfer: []connector.TransferCreatorMiddleware{
+				hooks.ValidateReceivingCurrency("MZN"),
+				hooks.DenySendingCountry("CUB"),
 			},
 		},
 	}

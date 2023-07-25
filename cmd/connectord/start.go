@@ -7,9 +7,9 @@ import (
 	"github.com/openpds/connectord/connector"
 )
 
-type ConnectorWrapperOption func(*ConnectorWrapper)
+type WrappedConnectorOption func(*WrappedConnector)
 
-func NewConnectorWrapper(reg *connector.Registry, name string) (*ConnectorWrapper, error) {
+func NewConnectorWrapper(reg *connector.Registry, name string) (*WrappedConnector, error) {
 	conn, err := reg.Find(name)
 	if err != nil {
 		return nil, err
@@ -18,11 +18,11 @@ func NewConnectorWrapper(reg *connector.Registry, name string) (*ConnectorWrappe
 	// process metrics
 	// process traces
 
-	return &ConnectorWrapper{conn: conn}, nil
+	return &WrappedConnector{conn: conn}, nil
 }
 
-func WithBeforCreateTransfer(mw connector.TransferCreatorMiddleware) ConnectorWrapperOption {
-	return func(cw *ConnectorWrapper) {
+func WithBeforCreateTransfer(mw connector.TransferCreatorMiddleware) WrappedConnectorOption {
+	return func(cw *WrappedConnector) {
 		if cw.beforCreateTransfer == nil {
 			cw.beforCreateTransfer = make([]connector.TransferCreatorMiddleware, 0)
 		}
@@ -31,12 +31,12 @@ func WithBeforCreateTransfer(mw connector.TransferCreatorMiddleware) ConnectorWr
 	}
 }
 
-type ConnectorWrapper struct {
+type WrappedConnector struct {
 	beforCreateTransfer []connector.TransferCreatorMiddleware
 	conn                connector.Connector
 }
 
-func (c ConnectorWrapper) Configure(ctx context.Context, cfg *connector.ConfigureOptions) error {
+func (c WrappedConnector) Configure(ctx context.Context, cfg *connector.ConfigureOptions) error {
 	// process metrics
 	// process traces
 
@@ -68,7 +68,7 @@ func shouldRetry(err error) bool {
 	return false
 }
 
-func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.TransferInput) (*connector.TransferOutput, error) {
+func (c WrappedConnector) CreateTransfer(ctx context.Context, input *connector.TransferInput) (*connector.TransferOutput, error) {
 	// process metrics
 	// process traces
 
@@ -135,7 +135,7 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.T
 	}
 }
 
-func (c ConnectorWrapper) ConfirmTransfer(ctx context.Context, input *connector.TransferInput) (*connector.TransferOutput, error) {
+func (c WrappedConnector) ConfirmTransfer(ctx context.Context, input *connector.TransferInput) (*connector.TransferOutput, error) {
 	// process metrics
 	// process traces
 
@@ -174,7 +174,7 @@ func (c ConnectorWrapper) ConfirmTransfer(ctx context.Context, input *connector.
 	}
 }
 
-func (c ConnectorWrapper) CancelTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
+func (c WrappedConnector) CancelTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
 	// process metrics
 	// process traces
 

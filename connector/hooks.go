@@ -2,6 +2,12 @@ package connector
 
 import "context"
 
+type PreTransferCreationFunc func(ctx context.Context, input *TransferInput) error
+
+func (p PreTransferCreationFunc) PreCreateTransfer(ctx context.Context, input *TransferInput) error {
+	return p(ctx, input)
+}
+
 type PreTransferCreation interface {
 	PreCreateTransfer(ctx context.Context, input *TransferInput) error
 }

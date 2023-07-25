@@ -23,6 +23,11 @@ type Manifest struct {
 	Deprecated bool       `json:"deprecated"`
 	Enabled    bool       `json:"enabled"`
 	Tags       []string   `json:"tags"`
+	Hooks      Hooks
+}
+
+type Hooks struct {
+	PreCreateTransfer []TransferCreatorMiddleware
 }
 
 func (m Manifest) Validate() error {

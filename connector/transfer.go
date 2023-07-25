@@ -49,6 +49,8 @@ type TransferInput struct {
 	ReceivingAmount   *int64  `json:"receiving_amount"`
 	SendingCurreny    *string `json:"sending_currency"`
 	ReceivingCurrency *string `json:"receiving_urrency"`
+	SendingCountry    *string `json:"sending_country"`
+	ReceivingCountry  *string `json:"receiving_country"`
 }
 
 type TransferOutput struct {
