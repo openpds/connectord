@@ -52,9 +52,9 @@ type Config struct {
 }
 
 type Operations struct {
-	CreateTransfer  *Operation `mapstructure:"create_transfer"`
-	CancelTransfer  *Operation `mapstructure:"cancel_transfer"`
-	ConfirmTransfer *Operation `mapstructure:"cancel_transfer"`
+	CreateTransfer  *Operation `mapstructure:"create_transfer,omitempty"`
+	CancelTransfer  *Operation `mapstructure:"cancel_transfer,omitempty"`
+	ConfirmTransfer *Operation `mapstructure:"cancel_transfer,omitempty"`
 }
 
 type Operation struct {

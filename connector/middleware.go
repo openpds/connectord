@@ -1,0 +1,7 @@
+package connector
+
+type TransferCreatorMiddleware func(TransferCreator) TransferCreator
+
+type TransferCancellerMiddleware func(TransferCanceller) TransferCanceller
+
+type TransferConfirmerMiddleware func(TransferConfirmer) TransferConfirmer

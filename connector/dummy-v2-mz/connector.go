@@ -1,4 +1,4 @@
-package dummymz
+package dummyv2mz
 
 import (
 	"context"
@@ -40,7 +40,7 @@ func (d *dummymz) Configure(opts *connector.ConfigureOptions) error {
 
 func (d dummymz) Manifest() connector.Manifest {
 	return connector.Manifest{
-		ID:      "dummy-mz",
+		ID:      "dummy-v2-mz",
 		Name:    "Dummy",
 		Version: "0.1.0",
 		Variables: []connector.Variable{

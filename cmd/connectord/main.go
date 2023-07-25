@@ -17,25 +17,38 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"log"
 
 	"github.com/openpds/connectord/config"
 	connector "github.com/openpds/connectord/connector"
-	dummymz "github.com/openpds/connectord/connector/dummy-mz"
+	dummyv1mz "github.com/openpds/connectord/connector/dummy-v1-mz"
+	dummyv2mz "github.com/openpds/connectord/connector/dummy-v2-mz"
 )
 
 func main() {
-	connectors := connector.NewRegistry(dummymz.New())
+	reg := connector.NewRegistry(
+		dummyv1mz.New(),
+		dummyv2mz.New(),
+	)
 
-	cfg, err := config.Init(connectors)
+	cfg, err := config.Init(reg)
 	if err != nil {
 		panic(err)
 	}
 
-	log.Printf("%q", cfg)
+	b, err := json.MarshalIndent(cfg, "", "  ")
+	if err != nil {
+		panic(err)
+	}
 
-	connectors.Walk(func(c connector.Connector) {
-		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s\n", c.Manifest().ID, c.Manifest().Name, c.Manifest().Version)
+	fmt.Printf("%s\n", string(b))
+
+	reg.Walk(func(c connector.Connector) {
+		print(c)
 	})
+}
+
+func print(c connector.Connector) {
+	fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s\n\n", c.Manifest().ID, c.Manifest().Name, c.Manifest().Version)
 }

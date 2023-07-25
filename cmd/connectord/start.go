@@ -7,6 +7,8 @@ import (
 	"github.com/openpds/connectord/connector"
 )
 
+type ConnectorWrapperOption func(*ConnectorWrapper)
+
 func NewConnectorWrapper(reg *connector.Registry, name string) (*ConnectorWrapper, error) {
 	conn, err := reg.Find(name)
 	if err != nil {
@@ -16,11 +18,22 @@ func NewConnectorWrapper(reg *connector.Registry, name string) (*ConnectorWrappe
 	// process metrics
 	// process traces
 
-	return &ConnectorWrapper{conn}, nil
+	return &ConnectorWrapper{conn: conn}, nil
+}
+
+func WithBeforCreateTransfer(mw connector.TransferCreatorMiddleware) ConnectorWrapperOption {
+	return func(cw *ConnectorWrapper) {
+		if cw.beforCreateTransfer == nil {
+			cw.beforCreateTransfer = make([]connector.TransferCreatorMiddleware, 0)
+		}
+
+		cw.beforCreateTransfer = append(cw.beforCreateTransfer, mw)
+	}
 }
 
 type ConnectorWrapper struct {
-	conn connector.Connector
+	beforCreateTransfer []connector.TransferCreatorMiddleware
+	conn                connector.Connector
 }
 
 func (c ConnectorWrapper) Configure(ctx context.Context, cfg *connector.ConfigureOptions) error {
@@ -68,6 +81,16 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.T
 		return nil, connector.ErrNotImplemented
 	}
 
+	for _, mw := range c.beforCreateTransfer {
+		tc = mw(tc)
+	}
+
+	if hook, ok := tc.(connector.PreTransferCreation); ok {
+		if err := hook.PreCreateTransfer(ctx, input); err != nil {
+			return nil, err
+		}
+	}
+
 	errC := make(chan error)
 	defer close(errC)
 
@@ -102,6 +125,12 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.T
 	case err := <-errC:
 		return nil, err
 	case resp := <-respC:
+		if hook, ok := tc.(connector.PostTransferCreation); ok {
+			if err := hook.PostCreateTransfer(ctx, resp); err != nil {
+				return nil, err
+			}
+		}
+
 		return resp, nil
 	}
 }
