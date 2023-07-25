@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	connectorsdk "github.com/openpds/connector-sdk"
+	"github.com/openpds/connectord/connector"
 )
 
 func New() *dummymz {
@@ -22,7 +22,7 @@ type config struct {
 	token string
 }
 
-func (d *dummymz) Configure(opts *connectorsdk.ConfigureOptions) error {
+func (d *dummymz) Configure(opts *connector.ConfigureOptions) error {
 	var err error
 
 	d.config.ip, err = opts.Variables.GetString("ip")
@@ -38,12 +38,12 @@ func (d *dummymz) Configure(opts *connectorsdk.ConfigureOptions) error {
 	return nil
 }
 
-func (d dummymz) Manifest() connectorsdk.Manifest {
-	return connectorsdk.Manifest{
+func (d dummymz) Manifest() connector.Manifest {
+	return connector.Manifest{
 		ID:      "dummy-mz",
 		Name:    "Dummy",
 		Version: "0.1.0",
-		Variables: []connectorsdk.Variable{
+		Variables: []connector.Variable{
 			{
 				Name:    "ip",
 				Type:    "string",
@@ -61,7 +61,7 @@ func (d dummymz) Manifest() connectorsdk.Manifest {
 				Desc: "IP represents an IP address",
 			},
 		},
-		Secrets: []connectorsdk.Secret{
+		Secrets: []connector.Secret{
 			{
 				Name:        "token",
 				Type:        "string",
@@ -71,6 +71,6 @@ func (d dummymz) Manifest() connectorsdk.Manifest {
 	}
 }
 
-func (d *dummymz) CreateTransfer(ctx context.Context, input *connectorsdk.CreateTransferInput, opts ...connectorsdk.Option) (*connectorsdk.CreateTransferOutput, error) {
+func (d *dummymz) CreateTransfer(ctx context.Context, input *connector.CreateTransferInput, opts ...connector.Option) (*connector.CreateTransferOutput, error) {
 	return nil, errors.New("not implemented")
 }

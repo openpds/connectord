@@ -21,13 +21,13 @@ package connectord.v1alpha1;
 option go_package = "github.com/openpds/connectord/api/v1alpha1;connectordv1alpha1";
 
 service Connectord {
-  rpc ListConnectors(ListConnectorsRequest) returns (ListConnectorsResponse) {}
+  rpc FetchConnectors(FetchConnectorsRequest) returns (FetchConnectorsResponse) {}
   rpc CreateTransfer(CreateTransferRequest) returns (CreateTransferResponse) {}
   rpc CancelTransfer(CancelTransferRequest) returns (CancelTransferResponse) {}
   rpc ConfirmTransfer(ConfirmTransferRequest) returns (ConfirmTransferResponse) {}
 }
 
-message ListConnectorsRequest {
+message FetchConnectorsRequest {
   string name = 1;
 }
 
@@ -55,7 +55,7 @@ message Connector {
   Requirements requirements = 3;
 }
 
-message ListConnectorsResponse {
+message FetchConnectorsResponse {
     repeated Connector connectors = 1;
 }
 

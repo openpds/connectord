@@ -22,7 +22,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ConnectordClient interface {
-	ListConnectors(ctx context.Context, in *ListConnectorsRequest, opts ...grpc.CallOption) (*ListConnectorsResponse, error)
+	FetchConnectors(ctx context.Context, in *FetchConnectorsRequest, opts ...grpc.CallOption) (*FetchConnectorsResponse, error)
 	CreateTransfer(ctx context.Context, in *CreateTransferRequest, opts ...grpc.CallOption) (*CreateTransferResponse, error)
 	CancelTransfer(ctx context.Context, in *CancelTransferRequest, opts ...grpc.CallOption) (*CancelTransferResponse, error)
 	ConfirmTransfer(ctx context.Context, in *ConfirmTransferRequest, opts ...grpc.CallOption) (*ConfirmTransferResponse, error)
@@ -36,9 +36,9 @@ func NewConnectordClient(cc grpc.ClientConnInterface) ConnectordClient {
 	return &connectordClient{cc}
 }
 
-func (c *connectordClient) ListConnectors(ctx context.Context, in *ListConnectorsRequest, opts ...grpc.CallOption) (*ListConnectorsResponse, error) {
-	out := new(ListConnectorsResponse)
-	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/ListConnectors", in, out, opts...)
+func (c *connectordClient) FetchConnectors(ctx context.Context, in *FetchConnectorsRequest, opts ...grpc.CallOption) (*FetchConnectorsResponse, error) {
+	out := new(FetchConnectorsResponse)
+	err := c.cc.Invoke(ctx, "/connectord.v1alpha1.Connectord/FetchConnectors", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func (c *connectordClient) ConfirmTransfer(ctx context.Context, in *ConfirmTrans
 // All implementations should embed UnimplementedConnectordServer
 // for forward compatibility
 type ConnectordServer interface {
-	ListConnectors(context.Context, *ListConnectorsRequest) (*ListConnectorsResponse, error)
+	FetchConnectors(context.Context, *FetchConnectorsRequest) (*FetchConnectorsResponse, error)
 	CreateTransfer(context.Context, *CreateTransferRequest) (*CreateTransferResponse, error)
 	CancelTransfer(context.Context, *CancelTransferRequest) (*CancelTransferResponse, error)
 	ConfirmTransfer(context.Context, *ConfirmTransferRequest) (*ConfirmTransferResponse, error)
@@ -86,8 +86,8 @@ type ConnectordServer interface {
 type UnimplementedConnectordServer struct {
 }
 
-func (UnimplementedConnectordServer) ListConnectors(context.Context, *ListConnectorsRequest) (*ListConnectorsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListConnectors not implemented")
+func (UnimplementedConnectordServer) FetchConnectors(context.Context, *FetchConnectorsRequest) (*FetchConnectorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FetchConnectors not implemented")
 }
 func (UnimplementedConnectordServer) CreateTransfer(context.Context, *CreateTransferRequest) (*CreateTransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTransfer not implemented")
@@ -110,20 +110,20 @@ func RegisterConnectordServer(s grpc.ServiceRegistrar, srv ConnectordServer) {
 	s.RegisterService(&Connectord_ServiceDesc, srv)
 }
 
-func _Connectord_ListConnectors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListConnectorsRequest)
+func _Connectord_FetchConnectors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FetchConnectorsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ConnectordServer).ListConnectors(ctx, in)
+		return srv.(ConnectordServer).FetchConnectors(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/connectord.v1alpha1.Connectord/ListConnectors",
+		FullMethod: "/connectord.v1alpha1.Connectord/FetchConnectors",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ConnectordServer).ListConnectors(ctx, req.(*ListConnectorsRequest))
+		return srv.(ConnectordServer).FetchConnectors(ctx, req.(*FetchConnectorsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -190,8 +190,8 @@ var Connectord_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ConnectordServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListConnectors",
-			Handler:    _Connectord_ListConnectors_Handler,
+			MethodName: "FetchConnectors",
+			Handler:    _Connectord_FetchConnectors_Handler,
 		},
 		{
 			MethodName: "CreateTransfer",

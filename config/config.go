@@ -19,8 +19,7 @@ package config
 import (
 	"time"
 
-	connectorsdk "github.com/openpds/connector-sdk"
-	"github.com/openpds/connectord/connectors"
+	"github.com/openpds/connectord/connector"
 )
 
 var (
@@ -33,14 +32,14 @@ type configOptions struct{}
 
 type Option func(*configOptions)
 
-func Init(opt ...Option) (*Config, error) {
+func Init(r *connector.Registry, opt ...Option) (*Config, error) {
 	cfg := &Config{
 		Connectors: map[string]*Operations{},
 	}
 
-	connectors.Walk(func(c connectorsdk.Connector) {
+	r.Walk(func(c connector.Connector) {
 		cfg.Connectors[c.Manifest().ID] = &Operations{}
-		if _, ok := c.(connectorsdk.TransferCreator); ok {
+		if _, ok := c.(connector.TransferCreator); ok {
 			cfg.Connectors[c.Manifest().ID].CreateTransfer = DefaultOperation
 		}
 	})
@@ -49,7 +48,7 @@ func Init(opt ...Option) (*Config, error) {
 }
 
 type Config struct {
-	Connectors map[string]*Operations `mapstructure:"connectors"`
+	Connectors map[string]*Operations `mapstructure:"connector"`
 }
 
 type Operations struct {

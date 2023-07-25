@@ -21,20 +21,22 @@ import (
 	"log"
 	"time"
 
-	connectorsdk "github.com/openpds/connector-sdk"
 	"github.com/openpds/connectord/config"
-	"github.com/openpds/connectord/connectors"
+	connector "github.com/openpds/connectord/connector"
+	dummymz "github.com/openpds/connectord/connector/dummy-mz"
 )
 
 func main() {
-	cfg, err := config.Init()
+	reg := connector.NewRegistry(dummymz.New())
+
+	cfg, err := config.Init(reg)
 	if err != nil {
 		panic(err)
 	}
 
 	log.Printf("%q", cfg)
 
-	connectors.Walk(func(c connectorsdk.Connector) {
+	reg.Walk(func(c connector.Connector) {
 		fmt.Printf("ID: %s\nNAME: %s\nVERSION: %s\n", c.Manifest().ID, c.Manifest().Name, c.Manifest().Version)
 	})
 
@@ -52,7 +54,7 @@ func run(t time.Time) {
 	fmt.Println(t)
 }
 
-/*func doConfigure(ctx context.Context, connctx *connectorsdk.Context, conn connectorsdk.Connector) error {
+/*func doConfigure(ctx context.Context, connctx *connector.Context, conn connector.Connector) error {
 	if err := ctx.Err(); err != nil {
 		return err
 	}
@@ -77,7 +79,7 @@ func run(t time.Time) {
 	}
 }
 
-func (Connectord) doCreateTransfer(ctx context.Context, c connectorsdk.Connector, input *connectorsdk.CreateTransferInput) (*connectorsdk.CreateTransferOutput, error) {
+func (Connectord) doCreateTransfer(ctx context.Context, c connector.Connector, input *connector.CreateTransferInput) (*connector.CreateTransferOutput, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
@@ -85,13 +87,13 @@ func (Connectord) doCreateTransfer(ctx context.Context, c connectorsdk.Connector
 	errC := make(chan error)
 	defer close(errC)
 
-	respC := make(chan *connectorsdk.CreateTransferOutput)
+	respC := make(chan *connector.CreateTransferOutput)
 	defer close(respC)
 
 	go func() {
-		creator, ok := c.(connectorsdk.TransferCreator)
+		creator, ok := c.(connector.TransferCreator)
 		if !ok {
-			errC <- connectorsdk.ErrMotImplemented
+			errC <- connector.ErrMotImplemented
 			return
 		}
 
@@ -114,7 +116,7 @@ func (Connectord) doCreateTransfer(ctx context.Context, c connectorsdk.Connector
 	}
 }
 
-func (Connectord) doConfirmTransfer(ctx context.Context, c connectorsdk.Connector, input *connectorsdk.CreateTransferInput) (*connectorsdk.CreateTransferOutput, error) {
+func (Connectord) doConfirmTransfer(ctx context.Context, c connector.Connector, input *connector.CreateTransferInput) (*connector.CreateTransferOutput, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
@@ -122,13 +124,13 @@ func (Connectord) doConfirmTransfer(ctx context.Context, c connectorsdk.Connecto
 	errC := make(chan error)
 	defer close(errC)
 
-	respC := make(chan *connectorsdk.CreateTransferOutput)
+	respC := make(chan *connector.CreateTransferOutput)
 	defer close(respC)
 
 	go func() {
-		creator, ok := c.(connectorsdk.TransferCreator)
+		creator, ok := c.(connector.TransferCreator)
 		if !ok {
-			errC <- connectorsdk.ErrMotImplemented
+			errC <- connector.ErrMotImplemented
 			return
 		}
 
@@ -151,12 +153,12 @@ func (Connectord) doConfirmTransfer(ctx context.Context, c connectorsdk.Connecto
 	}
 }
 
-func (Connectord) doCancelTransfer(ctx context.Context, c connectorsdk.Connector, input *connectorsdk.CreateTransferInput, opts ...connectorsdk.Option) (*connectorsdk.CreateTransferOutput, error) {
+func (Connectord) doCancelTransfer(ctx context.Context, c connector.Connector, input *connector.CreateTransferInput, opts ...connector.Option) (*connector.CreateTransferOutput, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
 
-	o := connectorsdk.Options{}
+	o := connector.Options{}
 
 	for _, opt := range opts {
 		opt(&o)
@@ -168,13 +170,13 @@ func (Connectord) doCancelTransfer(ctx context.Context, c connectorsdk.Connector
 	errC := make(chan error)
 	defer close(errC)
 
-	respC := make(chan *connectorsdk.CreateTransferOutput)
+	respC := make(chan *connector.CreateTransferOutput)
 	defer close(respC)
 
 	go func() {
-		creator, ok := c.(connectorsdk.TransferCreator)
+		creator, ok := c.(connector.TransferCreator)
 		if !ok {
-			errC <- connectorsdk.ErrMotImplemented
+			errC <- connector.ErrMotImplemented
 			return
 		}
 
