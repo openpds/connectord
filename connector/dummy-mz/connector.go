@@ -71,6 +71,18 @@ func (d dummymz) Manifest() connector.Manifest {
 	}
 }
 
-func (d *dummymz) CreateTransfer(ctx context.Context, input *connector.CreateTransferInput, opts ...connector.Option) (*connector.CreateTransferOutput, error) {
+func (d *dummymz) CreateTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
+	return nil, errors.New("not implemented")
+}
+
+func (d *dummymz) CancelTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
+	return nil, errors.New("not implemented")
+}
+
+func (d *dummymz) ConfirmTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
+	return nil, errors.New("not implemented")
+}
+
+func (d *dummymz) CheckTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
 	return nil, errors.New("not implemented")
 }

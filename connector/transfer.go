@@ -4,21 +4,53 @@ import (
 	"context"
 )
 
-type TransferCreator interface {
-	CreateTransfer(context.Context, *CreateTransferInput, ...Option) (*CreateTransferOutput, error)
+type TransferCanceller interface {
+	CancelTransfer(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
 }
 
-type TransferCreatorFunc func(context.Context, *CreateTransferInput, ...Option) (*CreateTransferOutput, error)
+type TransferCancellerFunc func(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
 
-func (t TransferCreatorFunc) CreateTransfer(ctx context.Context, input *CreateTransferInput, opt ...Option) (*CreateTransferOutput, error) {
+func (t TransferCancellerFunc) CancelTransfer(ctx context.Context, input *TransferInput, opt ...Option) (*TransferOutput, error) {
 	return t(ctx, input, opt...)
 }
 
-type CreateTransferInput struct {
+type TransferConfirmer interface {
+	ConfirmTransfer(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
+}
+
+type TransferConfirmerFunc func(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
+
+func (t TransferConfirmerFunc) ConfirmTransfer(ctx context.Context, input *TransferInput, opt ...Option) (*TransferOutput, error) {
+	return t(ctx, input, opt...)
+}
+
+type TransferCreator interface {
+	CreateTransfer(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
+}
+
+type TransferCreatorFunc func(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
+
+func (t TransferCreatorFunc) CreateTransfer(ctx context.Context, input *TransferInput, opt ...Option) (*TransferOutput, error) {
+	return t(ctx, input, opt...)
+}
+
+type TransferChecker interface {
+	CheckTransfer(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
+}
+
+type TransferCheckerFunc func(context.Context, *TransferInput, ...Option) (*TransferOutput, error)
+
+func (t TransferCheckerFunc) CheckTransfer(ctx context.Context, input *TransferInput, opt ...Option) (*TransferOutput, error) {
+	return t(ctx, input, opt...)
+}
+
+type TransferInput struct {
 	SendingAmount     *int64  `json:"sending_amount"`
 	ReceivingAmount   *int64  `json:"receiving_amount"`
 	SendingCurreny    *string `json:"sending_currency"`
 	ReceivingCurrency *string `json:"receiving_urrency"`
 }
 
-type CreateTransferOutput struct{}
+type TransferOutput struct {
+	Status string
+}

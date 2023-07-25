@@ -13,6 +13,9 @@ func NewConnectorWrapper(reg *connector.Registry, name string) (*ConnectorWrappe
 		return nil, err
 	}
 
+	// process metrics
+	// process traces
+
 	return &ConnectorWrapper{conn}, nil
 }
 
@@ -21,6 +24,9 @@ type ConnectorWrapper struct {
 }
 
 func (c ConnectorWrapper) Configure(ctx context.Context, cfg *connector.ConfigureOptions) error {
+	// process metrics
+	// process traces
+
 	if err := ctx.Err(); err != nil {
 		return err
 	}
@@ -32,7 +38,6 @@ func (c ConnectorWrapper) Configure(ctx context.Context, cfg *connector.Configur
 	defer close(errC)
 
 	go func() {
-
 		if err := c.conn.Configure(cfg); err != nil {
 			errC <- err
 		}
@@ -50,12 +55,15 @@ func shouldRetry(err error) bool {
 	return false
 }
 
-func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.CreateTransferInput) (*connector.CreateTransferOutput, error) {
+func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.TransferInput) (*connector.TransferOutput, error) {
+	// process metrics
+	// process traces
+
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
 
-	creator, ok := c.conn.(connector.TransferCreator)
+	tc, ok := c.conn.(connector.TransferCreator)
 	if !ok {
 		return nil, connector.ErrNotImplemented
 	}
@@ -63,7 +71,7 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.C
 	errC := make(chan error)
 	defer close(errC)
 
-	respC := make(chan *connector.CreateTransferOutput)
+	respC := make(chan *connector.TransferOutput)
 	defer close(respC)
 
 	go func() {
@@ -73,7 +81,7 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.C
 		)
 
 		for attempts = 0; attempts < maxAttempts; attempts++ {
-			resp, err := creator.CreateTransfer(ctx, input)
+			resp, err := tc.CreateTransfer(ctx, input)
 			if err != nil {
 				if shouldRetry(err) && attempts < maxAttempts-1 {
 					continue
@@ -98,25 +106,27 @@ func (c ConnectorWrapper) CreateTransfer(ctx context.Context, input *connector.C
 	}
 }
 
-func (c ConnectorWrapper) ConfirmTransfer(ctx context.Context, input *connector.CreateTransferInput) (*connector.CreateTransferOutput, error) {
+func (c ConnectorWrapper) ConfirmTransfer(ctx context.Context, input *connector.TransferInput) (*connector.TransferOutput, error) {
+	// process metrics
+	// process traces
+
 	if err := ctx.Err(); err != nil {
 		return nil, err
+	}
+
+	cc, ok := c.conn.(connector.TransferCreator)
+	if !ok {
+		return nil, connector.ErrNotImplemented
 	}
 
 	errC := make(chan error)
 	defer close(errC)
 
-	respC := make(chan *connector.CreateTransferOutput)
+	respC := make(chan *connector.TransferOutput)
 	defer close(respC)
 
 	go func() {
-		creator, ok := c.conn.(connector.TransferCreator)
-		if !ok {
-			errC <- connector.ErrNotImplemented
-			return
-		}
-
-		resp, err := creator.CreateTransfer(ctx, input)
+		resp, err := cc.CreateTransfer(ctx, input)
 		if err != nil {
 			errC <- err
 			return
@@ -135,9 +145,17 @@ func (c ConnectorWrapper) ConfirmTransfer(ctx context.Context, input *connector.
 	}
 }
 
-func (c ConnectorWrapper) CancelTransfer(ctx context.Context, input *connector.CreateTransferInput, opts ...connector.Option) (*connector.CreateTransferOutput, error) {
+func (c ConnectorWrapper) CancelTransfer(ctx context.Context, input *connector.TransferInput, opts ...connector.Option) (*connector.TransferOutput, error) {
+	// process metrics
+	// process traces
+
 	if err := ctx.Err(); err != nil {
 		return nil, err
+	}
+
+	cc, ok := c.conn.(connector.TransferCreator)
+	if !ok {
+		return nil, connector.ErrNotImplemented
 	}
 
 	o := connector.Options{}
@@ -152,17 +170,11 @@ func (c ConnectorWrapper) CancelTransfer(ctx context.Context, input *connector.C
 	errC := make(chan error)
 	defer close(errC)
 
-	respC := make(chan *connector.CreateTransferOutput)
+	respC := make(chan *connector.TransferOutput)
 	defer close(respC)
 
 	go func() {
-		creator, ok := c.conn.(connector.TransferCreator)
-		if !ok {
-			errC <- connector.ErrNotImplemented
-			return
-		}
-
-		resp, err := creator.CreateTransfer(ctx, input)
+		resp, err := cc.CreateTransfer(ctx, input)
 		if err != nil {
 			errC <- err
 			return
